@@ -18,15 +18,22 @@ public class Program {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int number = 0, primes = 0;
+        String line;
         while (number != 42) {
             System.out.print("-> ");
-            String numbers[] = scanner.nextLine().split(" ");
-            for (int i = 0; i < numbers.length; i++) {
-                number = Integer.parseInt(numbers[i]);
-                if (number == 42)
-                    break;
-                if (isPrime(number))
-                    primes++;
+            line = scanner.nextLine();
+            if (!line.isEmpty())
+            {
+                String[] numbers = line
+                        .replaceAll("\\s{2,}", " ").trim()
+                        .split(" ");
+                for (String s : numbers) {
+                    number = Integer.parseInt(s);
+                    if (number == 42)
+                        break;
+                    if (isPrime(number))
+                        primes++;
+                }
             }
         }
         System.out.println("Count of coffee-request - " + primes);
