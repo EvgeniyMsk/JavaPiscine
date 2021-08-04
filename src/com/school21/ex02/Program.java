@@ -36,6 +36,7 @@ public class Program {
                 }
             }
         }
+        scanner.close();
         System.out.println("Count of coffee-request - " + primes);
     }
 }

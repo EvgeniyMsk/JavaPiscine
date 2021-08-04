@@ -12,6 +12,7 @@ public class Program {
         if (number <= 1)
         {
             System.err.println("IllegalArgument");
+            scanner.close();
             System.exit(-1);
         } else
         {
@@ -26,6 +27,7 @@ public class Program {
                 step++;
             }
             System.out.println(result + " " + step);
+            scanner.close();
         }
 
     }

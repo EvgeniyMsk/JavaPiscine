@@ -17,24 +17,21 @@ public class Program {
         int maxWeekNumber = 0;
         while (!(line = scanner.nextLine()).equals("42")) {
             weekNumber = Integer.parseInt(line.replaceAll("\\s{2,}", " ").trim().split( " ")[1]);
-//
-//            marks[weekNumber] = Integer.MAX_VALUE;
-            int i = 0;
-            while (i < 5)
-            {
-                int value = scanner.nextInt();
-                i++;
+            if (weekNumber == 19 || (maxWeekNumber + 1 != weekNumber)) {
+                System.err.println("IllegalArgument");
+                System.exit(-1);
             }
-//            if (maxWeekNumber < weekNumber)
-//                maxWeekNumber = weekNumber;
-//            if (weekNumber == 19) {
-//                System.err.println("IllegalArgument");
-//                System.exit(-1);
-//            }
+            maxWeekNumber = weekNumber;
+            marks[weekNumber - 1] = Integer.MAX_VALUE;
+            String[] values = scanner.nextLine().replaceAll("\\s{2,}", " ").trim().split( " ");
+
+            for (String val : values) {
+                int currentMark = Integer.parseInt(val);
+                marks[weekNumber - 1] = currentMark < marks[weekNumber - 1] ? currentMark : marks[weekNumber - 1];
+            }
         }
-//        for (int i = 0; i < maxWeekNumber; i++)
-//        {
-//            writeGraph(marks[i]);
-//        }
+        scanner.close();
+        for (int i = 0; i < maxWeekNumber; i++)
+            writeGraph(marks[i]);
     }
 }
