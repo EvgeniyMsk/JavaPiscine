@@ -1,4 +1,4 @@
-package com.school21.ex04;
+package com.school21.day00.ex04;
 import java.util.Scanner;
 
 public class Program {

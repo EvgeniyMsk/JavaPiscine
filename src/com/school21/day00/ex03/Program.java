@@ -1,4 +1,4 @@
-package com.school21.ex03;
+package com.school21.day00.ex03;
 
 import java.util.Scanner;
 

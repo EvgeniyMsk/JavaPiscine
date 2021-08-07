@@ -1,4 +1,4 @@
-package com.school21.ex00;
+package com.school21.day00.ex00;
 
 public class Program {
 
