@@ -3,16 +3,26 @@ package com.school21.ex02;
 import java.util.Scanner;
 
 public class Program {
+
     public static boolean isPrime(int number) {
         if (number <= 1)
-        {
-            System.err.println("IllegalArgument");
-            System.exit(-1);
-        }
+            return false;
         for (int i = 2; i * i <= number; i++)
             if (number % i == 0)
                 return false;
         return true;
+    }
+
+    public static int getSum(int number) {
+        int result = 0;
+        if (number < 0)
+            number *= (-1);
+        while (number > 0)
+        {
+            result += number % 10;
+            number = number / 10;
+        }
+        return result;
     }
 
     public static void main(String[] args) {
@@ -31,7 +41,7 @@ public class Program {
                     number = Integer.parseInt(s);
                     if (number == 42)
                         break;
-                    if (isPrime(number))
+                    if (isPrime(getSum(number)))
                         primes++;
                 }
             }

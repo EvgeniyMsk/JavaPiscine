@@ -12,7 +12,7 @@ public class Program {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String line;
-        int weekNumber = 0;
+        int weekNumber;
         int[] marks = new int[18];
         int maxWeekNumber = 0;
         while (!(line = scanner.nextLine()).equals("42")) {
@@ -32,6 +32,9 @@ public class Program {
         }
         scanner.close();
         for (int i = 0; i < maxWeekNumber; i++)
+        {
+            System.out.printf("Week %d ", i + 1);
             writeGraph(marks[i]);
+        }
     }
 }
