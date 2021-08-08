@@ -28,6 +28,7 @@ public class Program {
         }
         System.out.println("Баланс первого пользователя: " + transactionsService.getUserBalance(0));
         System.out.println("Баланс второго пользователя: " + transactionsService.getUserBalance(1));
+        System.out.println("Список непарных транзакций: ");
         for (int i = 0; i < transactionsService.getUnpairedTransactions().length; i++)
             System.out.println(transactionsService.getUnpairedTransactions()[i]);
     }
