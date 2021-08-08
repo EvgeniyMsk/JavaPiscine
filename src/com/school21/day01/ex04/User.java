@@ -1,4 +1,4 @@
-package com.school21.day01.ex03;
+package com.school21.day01.ex04;
 
 public class User {
     private final int id;
@@ -38,6 +38,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "ID: " + id + " NAME: " + name + " BALANCE: " + balance;
+        return "ID: " + id + " NAME: " + name;
     }
 }

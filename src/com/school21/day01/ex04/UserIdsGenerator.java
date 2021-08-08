@@ -1,4 +1,4 @@
-package com.school21.day01.ex01;
+package com.school21.day01.ex04;
 
 public class UserIdsGenerator {
     private static UserIdsGenerator instance;

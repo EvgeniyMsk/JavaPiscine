@@ -1,11 +1,8 @@
-package com.school21.day01.ex02;
+package com.school21.day01.ex03;
 
-public interface UserList {
+public interface UsersList {
     void addUser(User user);
-
     User getUserById(int id) throws UserNotFoundException;
-
     User getUserByIndex(int index) throws UserNotFoundException;
-
-    int getCountOfUsers();
+    int getUsersCount();
 }

@@ -1,11 +1,16 @@
 package com.school21.day01.ex00;
 
 public class User {
-    private static int count;
-
+    private static int count = 0;
     private final int id;
-    private String name;
+    private final String name;
     private int balance;
+
+    public User(String name, int balance) {
+        this.id = count++;
+        this.name = name;
+        setBalance(balance);
+    }
 
     public int getId() {
         return id;
@@ -15,28 +20,19 @@ public class User {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getBalance() {
         return balance;
     }
 
     public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    public User(String name, int balance) {
-        this.id = User.count++;
-        this.name = name;
-        this.balance = balance;
+        if (balance < 0)
+            this.balance = 0;
+        else
+            this.balance = balance;
     }
 
     @Override
     public String toString() {
-        return "ID: " + this.id + " " +
-                "Name: " + this.name + " " +
-                "Balance: " + this.balance;
+        return "ID: " + id + " NAME: " + name + " BALANCE: " + balance;
     }
 }

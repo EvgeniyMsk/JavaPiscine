@@ -1,4 +1,4 @@
-package com.school21.day01.ex03;
+package com.school21.day01.ex04;
 
 
 import java.util.UUID;
@@ -74,6 +74,7 @@ public class Transaction {
     @Override
     public String toString() {
         return "Transaction: ID: " + id +
+                " Тип: " + category +
                 " Получатель: [" + receiver +
                 "] Отправитель: [" + sender +
                 "] Сумма: " + amount;

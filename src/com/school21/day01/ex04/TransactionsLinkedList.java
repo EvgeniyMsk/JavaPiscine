@@ -1,4 +1,4 @@
-package com.school21.day01.ex03;
+package com.school21.day01.ex04;
 
 import java.util.UUID;
 

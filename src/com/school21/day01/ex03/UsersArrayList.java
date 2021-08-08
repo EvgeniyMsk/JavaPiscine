@@ -1,4 +1,4 @@
-package com.school21.day01.ex02;
+package com.school21.day01.ex03;
 
 public class UsersArrayList implements UsersList {
     private User[] usersList = new User[10];

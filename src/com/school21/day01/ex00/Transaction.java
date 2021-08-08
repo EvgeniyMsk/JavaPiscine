@@ -3,18 +3,26 @@ package com.school21.day01.ex00;
 import java.util.UUID;
 
 public class Transaction {
-    private final String id;
-
+    private UUID id;
     private User receiver;
-
     private User sender;
-
     private TransactionType category;
+    private int amount;
 
-    private int sum;
+    public Transaction(User receiver, User sender, TransactionType category, int amount) {
+        this.receiver = receiver;
+        this.sender = sender;
+        this.category = category;
+        this.amount = amount;
+        this.id = UUID.randomUUID();
+    }
 
-    public String getId() {
+    public UUID getId() {
         return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public User getReceiver() {
@@ -41,63 +49,32 @@ public class Transaction {
         this.category = category;
     }
 
-    public int getSum() {
-        return sum;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setSum(int sum) {
-        this.sum = sum;
-    }
-
-    public Transaction(User receiver, User sender, TransactionType category, int sum) {
-        this.id = UUID.randomUUID().toString();
-        if (receiver == null || sender == null)
-            System.out.println("Транзакция не успешна. Причина: Ошибка получателя/отправителя");
-        else {
-            this.receiver = receiver;
-            this.sender = sender;
-            switch (category) {
-                case INCOME:
-                {
-                    if (sender.getBalance() - sum >= 0)
-                    {
-                        sender.setBalance(sender.getBalance() - sum);
-                        receiver.setBalance(receiver.getBalance() + sum);
-                    } else System.out.println("Транзакция не успешна. Причина: не хватает средств!");
-                    break;
-                }
-                case OUTCOME:
-                {
-                    if (receiver.getBalance() - sum >= 0)
-                    {
-                        sender.setBalance(sender.getBalance() + sum);
-                        receiver.setBalance(receiver.getBalance() - sum);
-                    } else System.out.println("Транзакция не успешна. Причина: не хватает средств!");
-                    break;
-                }
-                default: break;
-            }
-            this.category = category;
-            this.sum = sum;
+    public void setAmount(int amount) {
+        if (category.equals(TransactionType.INCOME))
+        {
+            if (amount < 0)
+                this.amount = 0;
+            else
+                this.amount = amount;
+        } else
+        {
+            if (amount > 0)
+                this.amount = 0;
+            else
+                this.amount = amount;
         }
+        this.amount = amount;
     }
 
     @Override
     public String toString() {
-        if (this.category.equals(TransactionType.INCOME))
-        {
-            return "ID: " + this.id + " " +
-                    "Category: " + this.category + " " +
-                    "Amount: " + this.sum + " " +
-                    "From: " + this.sender.getName() + " to: " + this.receiver.getName();
-        }
-        if (this.category.equals(TransactionType.OUTCOME))
-        {
-            return "ID: " + this.id + " " +
-                    "Category: " + this.category + " " +
-                    "Amount: " + this.sum + " " +
-                    "From: " + this.receiver.getName() + " to: " + this.sender.getName();
-        }
-        else return "ошибка транзакции";
+        return "Transaction: ID: " + id +
+                " Получатель: [" + receiver +
+                "] Отправитель: [" + sender +
+                "] Сумма: " + amount;
     }
 }

@@ -5,11 +5,9 @@ public class UserIdsGenerator {
     private static int id;
 
     private UserIdsGenerator() {
-
     }
 
-    public static UserIdsGenerator getInstance()
-    {
+    public static UserIdsGenerator getInstance() {
         if (instance == null)
             instance = new UserIdsGenerator();
         return instance;
@@ -18,5 +16,4 @@ public class UserIdsGenerator {
     public int generateId() {
         return id++;
     }
-
 }
