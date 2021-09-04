@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="db.properties"></context:property-placeholder>
+
+    <bean id="hikariDataSource"
+          class="com.zaxxer.hikari.HikariDataSource">
+        <property name="jdbcUrl" value="${db.url}"></property>
+        <property name="username" value="${db.user}"></property>
+        <property name="password" value="${db.password}"></property>
+    </bean>
+
+    <bean id="driverManagerDataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="${db.url}"></property>
+        <property name="username" value="${db.user}"></property>
+        <property name="password" value="${db.password}"></property>
+        <property name="driverClassName" value="${db.driver.name}"></property>
+    </bean>
+
+    <bean id="usersRepositoryJdbcImplHikariDataSource"
+          class="school21.spring.service.repositories.UsersRepositoryJdbcImpl">
+        <constructor-arg ref="hikariDataSource"></constructor-arg>
+    </bean>
+
+    <bean id="usersRepositoryJdbcImplDriverManagerDataSource"
+          class="school21.spring.service.repositories.UsersRepositoryJdbcImpl">
+        <constructor-arg ref="driverManagerDataSource"></constructor-arg>
+    </bean>
+
+    <bean id="usersRepositoryJdbcTemplateImplHikariDataSource"
+          class="school21.spring.service.repositories.UsersRepositoryJdbcTemplateImpl">
+        <constructor-arg ref="hikariDataSource"></constructor-arg>
+    </bean>
+
+    <bean id="usersRepositoryJdbcTemplateImplDriverManagerDataSource"
+          class="school21.spring.service.repositories.UsersRepositoryJdbcTemplateImpl">
+        <constructor-arg ref="driverManagerDataSource"></constructor-arg>
+    </bean>
+
+</beans>
